@@ -36,10 +36,26 @@ def lista_user(request):
       # Buscar nombre especifico en la base de datos
       if request.method == 'POST':
             
-            user_requered = request.POST["searching-user"]
+            user_requered =  request.POST["searching-user"]
+            print(user_requered) 
             search_user = RegisterUser.objects.all()
-                   # search_name_user = RegisterUser.objects.get('')
-      
+            user = set()
+          
+
+            for users in search_user:
+                  if users.name_user == user_requered:
+                        user.clear()
+                        user.add(users.name_user)
+                        print(user)
+                        break
+                  else:
+                        if users.name_user != user_requered:
+                              user.clear()
+                              user.add('No')
+                              print(user)
+                        break
+                        
+                              
       
       data_user = {
                   'register_user': register_user,
