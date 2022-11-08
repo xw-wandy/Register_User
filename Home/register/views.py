@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import RegisterUser
 from django.http import HttpResponseRedirect
+import random
 # Create your views here.
 def index(request):
       
@@ -30,37 +31,33 @@ def lista_user(request):
       for name_user in register_user:
             lista_name_user.append(name_user.name_user)
       
+      # lista_number_user d
       lista_number_user = len(lista_name_user)      
-      
       
       # Buscar nombre especifico en la base de datos
       if request.method == 'POST':
             
-            user_requered =  request.POST["searching-user"]
-            print(user_requered) 
+            user_requered =   request.POST["searching-user"]
             search_user = RegisterUser.objects.all()
-            user = set()
-          
-
-            for users in search_user:
-                  if users.name_user == user_requered:
-                        user.clear()
-                        user.add(users.name_user)
-                        print(user)
-                        break
-                  else:
-                        if users.name_user != user_requered:
-                              user.clear()
-                              user.add('No')
-                              print(user)
-                        break
+            buscando_usuario = str
+            
+            
+            for user in search_user:
+                        buscando_usuario = user
+                        if buscando_usuario.name_user == user_requered:
+                              print(buscando_usuario)
+                              break      
+                        else:
+                              buscando_usuario = "No encontrado"
                         
                               
+                 #________________________________________       
       
       data_user = {
                   'register_user': register_user,
                   'lista_name_user': lista_name_user,
                   'lista_number_user': lista_number_user,
+                  'buscando_usuario':buscando_usuario,
       }
       return render(request, 'register/lista_user.html', data_user)
 
