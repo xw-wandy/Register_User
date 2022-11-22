@@ -10,12 +10,11 @@
 </head>
 <body>
 
-      <div class='container shadow rounded-3 mt-4 p-2'>
+      <div class='container shadow rounded-3 mt-4 p-2 w-50 p-3'>
 
             <h4>
                  <strong>
-                  Lista de los usuarios registrados en la base
-                  de datos
+                  List user on data base
                  </strong>
             </h4>
 
@@ -30,25 +29,29 @@
             
 
                   <h5>
-                        <strong>Cantidad de usuarios</strong>       
-                        <br>{{lista_number_user}}
+                        <strong class='text-danger'>Quantity User: </strong>       {{lista_number_user}}
+                        <br>
                   </h5>
 
 <!--Input para buscar usuarios -->
                   
                   <form action="" method="POST">
                         {% csrf_token %}
-                        <input type="text" name='searching-user' placeholder='Buscar usuario'>
-                        <input type="submit" value="Buscar">
+                        <input type="text" name='searching-user' placeholder='Searching User'
+                        class='mb-2'>
+                        <input type="submit" value="Search">
 
                   </form>
 
                   {% if user_null %}
-                  <h3 class='text-danger'>>>><strong>{{user_null}}</strong><<<</h3>
+                  <h3 class='text-danger rounded-1'>>>><strong>{{user_null}}</strong><<<</h3>
                   {% endif %}
 
+                  <div class='rounded-2 bg-black w-25 text-center'> 
+                        <a href="{% url 'register:home' %}" class='text-decoration-none  text-light'>Back home</a>
+
+                  </div>
                
-                  <a class='bg-dark mt-3 rounded-1 text-danger' href="{% url 'register:index' %}">Inicio</a>
       </div>
 <!--Usuarios en contrados-->
       <div class='container shadow w-25 rounded-3 mt-4 '>

@@ -2,29 +2,43 @@ from django.shortcuts import render
 from .models import RegisterUser
 from django.http import HttpResponseRedirect
 import random
-# Create your views here.
+
+
+# Vista ~Principal
 def index(request):
+
+      user_on_register = str()
       
-      if request.method  == 'POST':
-            register_user = RegisterUser()
-            register_user.name_user = request.POST['name']      
-            register_user.email_user = request.POST['email']      
-            register_user.id_user = request.POST['id']      
-            register_user.save()
-            print(register_user.name_user)
-            print(register_user.id_user)
-            print(register_user.name_user)
-            print("Primera validacion")
-            return  HttpResponseRedirect('/lista_user/')
+
+      if request.method == 'POST':
+            name_user =request.POST['name']
+            print(name_user)
+            
+            register_user = RegisterUser.objects.all()
+            
+                  # register_user.email_user = request.POST['email']      
+                  # register_user.id_user = request.POST['id']  
+
+            user_on_register = str
+            
+            for user in register_user:
+                        user_2 = user
+                        if user_2.name_user == name_user:
+                              user_on_register = user.name_user
+                              return HttpResponseRedirect('/perfil_user/',  
+                              {'user_on_register': user_on_register,      })
+                        else:
+                              user_on_register = 'Usuario incorrecto'
+
+
       else:
-            print("Segunda validacion")
-       
-            # return HttpResponseRedirect('/rederict/')
+                  user_on_register 
+                  
+      return render(request, 'register/index.html', {'user_on_register': user_on_register})
 
+ 
 
-
-      return render(request, 'register/index.html')
-
+#  Vista ~Lista de Usuarios
 def lista_user(request):
       register_user = RegisterUser.objects.all()
       lista_name_user = []
@@ -32,23 +46,23 @@ def lista_user(request):
             lista_name_user.append(name_user.name_user)
       
       # lista_number_user d
-      lista_number_user = len(lista_name_user)      
-      
+      lista_number_user = len(register_user)
+      buscando_usuario = str
+
       # Buscar nombre especifico en la base de datos
-      if request.method == 'POST':
+      
+      user_requered = str
+      # user_requered =   request.POST["searching-user"]
+      search_user = RegisterUser.objects.all()
             
-            user_requered =   request.POST["searching-user"]
-            search_user = RegisterUser.objects.all()
-            buscando_usuario = str
             
-            
-            for user in search_user:
-                        buscando_usuario = user
-                        if buscando_usuario.name_user == user_requered:
-                              print(buscando_usuario)
-                              break      
-                        else:
-                              buscando_usuario = "No encontrado"
+      for user in search_user:
+                  buscando_usuario = user
+                  if buscando_usuario.name_user == user_requered:
+                        print(buscando_usuario)
+                        break      
+                  else:
+                        buscando_usuario = "No encontrado"
                         
                               
                  #________________________________________       
@@ -63,3 +77,17 @@ def lista_user(request):
 
 def rederict(request):
       return render(request, 'register/rederict.html')
+
+
+
+
+
+
+
+def perfil_user(request):
+      return render(request, 'register/perfil_user.html')
+
+
+
+def register(request):
+      return render(request,'register/register.html')
