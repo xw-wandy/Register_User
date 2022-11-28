@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js" integrity="sha384-q9CRHqZndzlxGLOj+xrdLDJa9ittGte1NksRmgJKeCV9DrM7Kz868XYqsKWPpAmn" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+            <!-- Stylos CSS-->
+      <link rel="stylesheet" href="{% static '/register/stylos.css' %}">
+      <title>Home</title>
+</head>
+<body>
+
+      <!--Header-->
+      <header>
+
+            <!--Title-->
+            <div class='container shadow d-flex mt-4' id='header'>
+                  <h3 class='mt-2'>Welcome at Home!</h3>
+            <!--Bar of link-->
+            <div class='container  mt-3 w-75 text-end' id='bar'>
+                  <ul> 
+                        <a href="{% url 'register:register' %}" class='text-decoration-none text-center text-light shadow  p-1 rounded-3 bg-black opacity-75 me-2'>Register</a>
+                        <a href="{% url 'register:login' %}" class='text-decoration-none text-center text-light shadow  p-1 rounded-3 bg-black opacity-75 me-2'>Log in </a>
+              </ul>
+              </div>
+            </div>
+
+
+            
+      </header>
+<main>
+      
+      <!--Dev of Post-->
+      <div class='container  mt-3 mb-3 ' id='dev-centrar'>
+            
+            <!--img of post-->
+            <div class='container  justify-content-center d-flex' id='img-of-post'>
+                  <img src="{% static 'register/img-profile/Girls-blue.jpg' %}" class=' shadow mt-3' alt="Dont'not exist img">
+
+            </div>
+            
+            <div class='container mt-2  mb-3' id='title-post' >
+                  <h6><strong>Only girl loocking night city</strong></h6>
+                  
+            </div>
+
+            <!--div off  post-->
+            <div class='container shadow  w-100 mt-2' id='div-off-post'>
+                  
+                  <!--parrafo of post-->
+                        <p class='text-center pt-2 ' id='post-parrafo'>
+
+                              If Somebody hur you i wanna fight, but my heans been brokend one to time, so i use my voice i’ll be so foccking rude, the words win but another lose.
+
+                        </p>
+
+
+                  <!--user and like, share, comment-->
+                  <div class='container mt-3 mb-3 ' id='share-like-comment'>
+                        
+                        <!--profile user-->
+                        <div class='container ' id='profile-user'>
+                              <img src="{% static 'register/img-profile/doog.png' %}"  
+                        width='50' height='50'
+                        class='rounded-circle' alt="img-user">
+                        <h6>Wandy Olivares</h6>
+                        </div>
+
+
+                        <div id='div-inputs'>
+                              
+                        <input type="button"  class='rounded-1 border-0  '  id='share' >
+                        <input type="button"  class='rounded-1 border-0 ' id="comment">
+                        <input type="button"  class='rounded-1 border-0 '  id="like">
+                        </div>
+                  </div>
+
+                  <!--input comment and buttom commit-->
+                  <div class='container' id='comment-and-commit' >
+
+                        <input type="text" placeholder='🙂Add comment'
+                         class=' border-0 mt-3 mb-2 '
+                         id='input-comment'>
+
+                        <input type="button" value="Commit"
+                         class='border-0 text-light ' id='button-commit'>     
+                  </div>
+
+            </div>
+
+      </div>
+</main>
+      
+</body>
+</html>
