@@ -4,6 +4,12 @@ from django.http import HttpResponseRedirect
 import random
 
 
+
+
+def welcome(request):
+      return render(request, 'register/welcome.html')
+
+
 # Vista ~Principal
 def home(request):
 
@@ -151,27 +157,49 @@ def perfil_user(request):
 
 def register(request):
       
-      new_user = New_User()
-      export_user = New_User.objects.all()
+      validar = False
+
+      # export_user = New_User.objects.all()
+      user_one = ''
+
+      new_user = RegisterUser()
+      list_user_registered = []
+
+      listo_getting = ''
+
+      mesagge_error = ''
 
       if request.method == 'POST':
-            new_user.full_name = request.POST['full-name']
-            new_user.email_user = request.POST['email-user']
+            new_user.name_user = request.POST['full-name']
+            # new_user.email_user = request.POST['email-user']
+            name_getting = request.POST['full-name']
+            listo_getting = name_getting
+
+            conts_user = RegisterUser.objects.all()
             
-            new_user.save()
+            user_registered = RegisterUser.objects.all()
 
-      for user in export_user:
-            print(user)
-      
+            
+            for user_r in user_registered:
+                        if name_getting == user_r.name_user:
+                              validar = True
+                        # Si user esta registrado no se puede guardar
 
+      if validar == True:
+            user_one =  "Este usuario ya a sido registrado "
 
-            print(' ')
+      else:
+            if listo_getting == '':
+                  mesagge_error = 'Error'
+                  print(mesagge_error)
+            else:
 
-            print(new_user.full_name)
-            print(' ')
-            print(new_user.email_user)
-        
-            print(' ')
+                  new_user.save()
+            
+                  return HttpResponseRedirect('/login/')
 
+      contex = {  
+                  'user_one': user_one,
+            }
 
-      return render(request,'register/register.html')
+      return render(request,'register/register.html', contex)

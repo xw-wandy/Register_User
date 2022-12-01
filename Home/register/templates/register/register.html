@@ -30,7 +30,7 @@
 
             <ul> 
                   <a href="{% url 'register:login' %}" class='text-decoration-none text-center text-light shadow  p-1 rounded-3 bg-black opacity-75 me-2'>Log in </a>
-                  <a href="{% url 'register:home' %}" class='text-decoration-none text-center text-light shadow  p-1 rounded-3 bg-black opacity-75 me-2'>Home</a>
+                  {% comment %} <a href="{% url 'register:home' %}" class='text-decoration-none text-center text-light shadow  p-1 rounded-3 bg-black opacity-75 me-2'>Home</a> {% endcomment %}
         </ul>
         
         </div>
@@ -39,16 +39,25 @@
 </header>
 
 <main class='container w-25 mt-5 shadow p-3 rounded-3'>
+
+      <div class='container  text-center p-1 rounded-1 mb-2'>
+            <h6 class='text-danger'>
+                  {{user_one}}
+            </h6>
+      </div>
+
       <form action="" method="post">
       {% csrf_token %}
 
             <input type="text" name='full-name' 
             placeholder='Full name' id='full-name'
-             class='mb-2 shadow rounded-3 border-0 p-2 w-100'>
+            required
+             class='mb-2 bg-white  rounded-3 border-0 p-2 w-100'>
 
             <input type="email" name="email-user"
              placeholder='Email' id="email"
-            class='mb-2 shadow rounded-3 border-0 p-2 w-100'>
+             required
+            class='mb-2 s rounded-3 border-0 p-2 w-100'>
             <br>
 
 <!--Buttoms of  subtmi-->
@@ -57,10 +66,19 @@
                   {% comment %} <input type="button" value="Log in" class='me-3 w-25 rounded-1 border-0 '>
                   <input type="button" value="Sen on" class=' bg-dark  w-25 text-light rounded-2'> {% endcomment %}
 
-                  <input type="submit" value="Enviar" class='bg-black rounded-2  w-25 text-light'>
+                  <input type="submit" 
+                  class='bg-black rounded-3  w-50 text-light'
 
+                  value="Evaluar">
+                  
             </div>
       </form>
+
+
+      {% comment %} <!--Dev of listo-->
+      <div class='container shadow'>
+            <input type="checkbox" name="" id="">
+      </div> {% endcomment %}
 </main>
 
 <footer>
