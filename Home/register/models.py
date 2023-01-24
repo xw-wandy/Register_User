@@ -9,6 +9,9 @@ class RegisterUser(models.Model):
       name_user = models.CharField(max_length=100)
       email_user = models.CharField(max_length=100)
       id_user = models.CharField(max_length=100)
+
+      name_friend = models.CharField(null=True, max_length=50)
+      text_messenger = models.CharField( max_length=1000,null=True)
       
       def __str__(self) -> str:
             return self.name_user
@@ -30,7 +33,6 @@ class New_User(models.Model):
 
       def __str__(self):
           return self.full_name
-
 
 
 

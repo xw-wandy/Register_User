@@ -31,16 +31,18 @@
                   
                   <a href="{% url 'register:home' %}" class='text-decoration-none text-center text-light shadow  p-1 rounded-3 bg-black opacity-75 me-2'>Home</a>
 
+                  <a href="{% url 'register:mensaje' %}" class='text-decoration-none text-center text-light shadow  p-1 rounded-3 bg-black opacity-75 me-2'>App Mensaje</a>
+
         </ul>
         </div>
       </div>
 
 </header>
 
-      <main class='container mt-4'>
+      <main class='container mt-4 d-flex'>
 
             
-      <div class='  w-25  text-center mt-2 rounded-2 shadow text-black' id='profile-data-user'>
+      <div class='  w-auto  text-center mt-2 rounded-2 shadow text-black' id='profile-data-user'>
 
             <img src="{% static 'register/img-profile/blur.png' %}" 
             width='200' height='200' class='rounded-circle shadow' alt="Image none">
@@ -63,6 +65,33 @@
             {{login_data}}
       </h4>
 
+
+
+
+
+
+
+
+<!--Div of the mensaje-->
+ <form action="" method="post">
+{% csrf_token %}
+      <div class='container'>
+            <h6>App Messenger</h6>
+
+            <div class=' mt-2 mb-1 w-75 justify-content-center shadow rounded-3 d-flex flex-wrap p-3'>
+                  {% comment %} <h6>...........</h6> {% endcomment %}
+
+                  <input type="text"  name='name_user' placeholder='Name of Amigo' 
+                  class='mt-2 mb-2 rounded-2 border-1 p-1'>
+
+                  <input type="text" name="mensaje" placeholder='Write a Text'
+                  class='mt-2 mb-2 rounded-2 border-1 p-1'>
+
+            </div>
+            <input type="submit" value="Enviar" class='p-1 border-0 rounded-3'>
+
+      </div>
+ </form>
       </main>
       <footer>
    

@@ -62,12 +62,9 @@ def login(request):
       return render(request, 'register/login.html', 
       {'user_on_register': user_on_register,  })
 
- 
 
 
 
-
-#___________________________________________       
 def lista_user(request):
       register_user = RegisterUser.objects.all()
 
@@ -203,3 +200,7 @@ def register(request):
             }
 
       return render(request,'register/register.html', contex)
+
+
+def mensaje(request):
+      pass

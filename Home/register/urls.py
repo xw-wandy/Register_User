@@ -3,7 +3,7 @@ from django.urls import path
 
 
 app_name = 'register'
-urlpatterns = [
+urlpatterns = [ 
     path('', views.welcome, name='welcome'),
 
     path('home/', views.home, name='home'),
@@ -12,4 +12,6 @@ urlpatterns = [
     path("rederict/", views.rederict , name="rederict"),
     path('perfil_user/', views.perfil_user, name='perfil_user'),
     path("register/", views.register, name="register"),
+    path("mensaje/", views.mensaje, name="mensaje"),
+    
 ]
